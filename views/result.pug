@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    h3: a(href='http://localhost:3000/ps4/') Return to search another ingredient
+    h3 Here are the results related to your input "#{ingredient}" using  #{syntax}
+    ul
+        each val in dishArray
+            li: a(href= ''+ val.url) #{val.title}
+            img.image(src='' + val.image )
