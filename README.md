@@ -1,3 +1,12 @@
+# For Future me:
+If want to connect local Angular project with local Express &Node.js : watch this [YouTube video](https://www.youtube.com/watch?v=RSJxWJ6dCL4) for reference.
+
+Things to do:
+1. Construct Express with a "`router.get("/:var")`" route
+2. In the service.ts file, use `"/api/var"` as the URL for http.get()
+3. Create a `proxy.conf.json` to alter the path Angular uses.
+4. To successfully compile and run in terminal: `ng serve --proxy-config proxy.conf.json`
+
 # AngularRecipe
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.4.

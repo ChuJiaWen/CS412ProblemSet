@@ -1,0 +1,12 @@
+
+<div *ngIf="isVisible" name="details">
+  <p> Cached: {{cached}}</p>
+  <ul>
+    <li *ngFor="let recipe of recipeList">
+      <p> <a href={{recipe.url}}>{{recipe.title}}</a> </p>
+      <img src={{recipe.image}}>
+    </li>
+  </ul>
+</div>
+
+

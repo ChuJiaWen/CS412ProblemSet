@@ -1,0 +1,10 @@
+<h3>Find a random recommended dish using the ingredient!</h3>
+
+<form [formGroup]="recipeFormGroup" (ngSubmit)="getRecipeByName()">
+  Ingredient: <input  formControlName="queryControl" > <br/>
+  <button type="submit">Submit</button>
+</form>
+
+<app-child-response [recipeList]="recipeList" [isVisible]="isVisible" [cached]="cached"></app-child-response>
+
+
