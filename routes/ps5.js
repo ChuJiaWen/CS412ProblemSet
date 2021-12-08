@@ -57,6 +57,29 @@ async function pass_async(dishArray) {
     await Promise.all(unresolvedPromises);
 }
 
+router.get('/:query', async function (req, res, next) {
+    const query = req.params.query;
+    if (await existsAsync(query)){//if key exists in cache, grab it
+        let dishArray = await getAsync(query);
+        let response ={
+            dishData : dishArray,
+            cached: true //NOTE: DIDN'T CHECK IF THE RESPONSE IS NULL ABOVE
+        }
+        res.send(response);
+    }else{//if key not in cache, retrieve the result and store it in cache
+        const dishArray = await getArray_async(query);
+        await pass_async(dishArray);
+        await setAsync(query, JSON.stringify(dishArray));
+        let response ={
+            dishData : dishArray,
+            cached: false //NOTE: DIDN'T CHECK IF THE RESPONSE IS NULL ABOVE
+        }
+        await expireAsync(query,15);
+        res.send(response);
+    }
+
+});
+
 router.post('/async', async function (req, res, next) {
     const query = req.body.query;
     if (await existsAsync(query)){//if key exists in cache, grab it
